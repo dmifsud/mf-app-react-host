@@ -27,12 +27,6 @@ export default ({ mode }: { mode: string }) => {
       target: 'esnext',  // Ensure this is set to 'esnext
       outDir: 'dist', 
       assetsDir: 'mf-app-react-host/assets',
-      rollupOptions: {
-        input: 'src/main.tsx', // Entry file
-        output: {
-          entryFileNames: 'main.js', // Specify the output file name
-        },
-      },
     },
   });
 };
