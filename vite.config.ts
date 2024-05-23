@@ -9,7 +9,7 @@ export default ({ mode }: { mode: string }) => {
   const env = loadEnv(mode, process.cwd());
   console.log('mode', mode);
   return defineConfig({
-    // base: "http://localhost:4173", // to change the base path based on environment and actual deployment url
+    base: "https://dmifsud.github.io/mf-app-react-host", // to change the base path based on environment and actual deployment url
     plugins: [
       // eslint(),
       react(),
@@ -26,7 +26,7 @@ export default ({ mode }: { mode: string }) => {
     build: {
       target: 'esnext',  // Ensure this is set to 'esnext
       outDir: 'dist', 
-      assetsDir: 'mf-app-react-host/assets',
+      // assetsDir: 'mf-app-react-host/assets',
     },
   });
 };
