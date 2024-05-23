@@ -43,8 +43,8 @@ A `postinstall` command is executed that checks for a `package.local.json` file 
  ```
  {
     "devDependencies": {
-        "@mf-app/remote": "file:../remote/dist/types",
-        "@mf-app/store": "file:../shared-store/dist/types"
+        "@mf-app/remote": "file:../mf-app-react-remote/dist/types",
+        "@mf-app/store": "file:../fm-app-store/dist/types"
     }
 }
 ```
