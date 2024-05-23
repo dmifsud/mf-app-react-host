@@ -9,13 +9,13 @@ export default ({ mode }: { mode: string }) => {
   const env = loadEnv(mode, process.cwd());
   console.log('mode', mode);
   return defineConfig({
-    base: "http://localhost:4173", // to change the base path based on environment and actual deployment url
+    // base: "http://localhost:4173", // to change the base path based on environment and actual deployment url
     plugins: [
       // eslint(),
       react(),
       federation({
         name: 'remote_app',
-        remotes: getRemoteProjects("development"),
+        remotes: getRemoteProjects(mode as 'development' | 'production'),
         shared: ['react', 'react-dom', 'zustand']
     })
     ],
@@ -26,7 +26,7 @@ export default ({ mode }: { mode: string }) => {
     build: {
       target: 'esnext',  // Ensure this is set to 'esnext
       outDir: 'dist', 
-      assetsDir: '.', // Keep the assets directory structure flat
+      assetsDir: 'mf-app-react-host/assets',
       rollupOptions: {
         input: 'src/main.tsx', // Entry file
         output: {
