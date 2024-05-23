@@ -8,8 +8,14 @@ import { getRemoteProjects } from './federation.config';
 export default ({ mode }: { mode: string }) => {
   const env = loadEnv(mode, process.cwd());
   console.log('mode', mode);
+
+  const productionConfig = {};
+  if (mode === 'production') {
+    productionConfig['base'] = 'https://dmifsud.github.io/mf-app-react-host';
+  }
+
   return defineConfig({
-    base: "https://dmifsud.github.io/mf-app-react-host", // to change the base path based on environment and actual deployment url
+    ...productionConfig,
     plugins: [
       // eslint(),
       react(),

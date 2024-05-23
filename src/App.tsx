@@ -28,7 +28,7 @@ function App() {
       <div>{sayHelloWorld('from "host" app')}</div>
       <div className="card">
         <ReactButton/>
-        <LitButton onCountUpdated={handleLitCount}/>
+        <LitButton onCountUpdated={handleLitCount} text='Updated text from host'/>
         {/* <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button> */}
