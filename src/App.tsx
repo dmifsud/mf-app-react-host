@@ -1,18 +1,22 @@
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg';
 import './App.css'
-import ReactButton from '@mf-app/remote/components/ReactButton';
+import CounterButton from '@mf-app/remote/components/ReactButton';
 import LitButton from '@mf-app/remote/web-components/lit-button';
-// import counterStore from '@mf-app/remote/store/counter.store';
-import { sayHelloWorld } from '@mf-app/store/index';
-import counterStore from '@mf-app/store/counter/store.counter';
-
+// import useAuthStore from '@mf-app/store/auth/store.auth';
+import useStore, { sayHelloWorld } from '@mf-app/store/index';
+// import counterStore from '@mf-app/store/counter/store.counter';
+import ClickTimes from '@mf-app/remote/components/ClickTimes';
+import Login from '@mf-app/remote/components/auth/Login';
 function App() {
+ 
+  const { authSlice, counterSlice, profileSlice } = useStore();
   
-  const { count: counterCount, inc } = counterStore();
-
+  // const { actions } = counterStore();
+  // const { isAuthenticated } = useAuthStore();
+  const time = Date.now();
   const handleLitCount = (_event: Event) => {
-    inc(-1);
+    counterSlice.actions.inc(-1);
   };
   return (
     <>
@@ -25,9 +29,11 @@ function App() {
         </a>
       </div>
       <h1>Vite + React + TS + Tailwind + Web Components</h1>
+      {authSlice.isAuthenticated ? <div>Authenticated: {profileSlice.name} {profileSlice.surname} </div> : <Login />}
+      
       <div>{sayHelloWorld('from "host" app')}</div>
       <div className="card">
-        <ReactButton/>
+        <CounterButton text="Remote button in host"/>
         <LitButton onCountUpdated={handleLitCount} text='Updated text from host'/>
         {/* <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
@@ -42,8 +48,12 @@ function App() {
 
 
       <div>
-        <h5>Shared store count</h5>
-        <p>Count: {counterCount}</p>
+        <p>
+          <ClickTimes />
+        </p>
+      </div>
+      <div>
+        {time}
       </div>
     </>
   )
