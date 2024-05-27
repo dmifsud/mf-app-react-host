@@ -60,6 +60,13 @@ This command starts the host application with hot module replacement (HMR), util
 
 - Any changes made to the remote applications must be re-compiled for the updates to take effect in the host application and `npm install` needs to be exectued on this [host] app for the types to take effect.
 
+## Project Dependencies
+
+- Remote Project: contains dumb components and components that use the shared store. https://github.com/dmifsud/mf-app-react-remote 
+
+- Shared Store: Zustand Store for consistent state management across the host and remote project. https://github.com/dmifsud/mf-app-store
+
+
 ## References
 
 https://stackoverflow.com/questions/75850348/how-to-create-a-types-only-package-on-npm
