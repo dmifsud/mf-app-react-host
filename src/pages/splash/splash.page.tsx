@@ -10,7 +10,7 @@ import ClickTimes from '@mf-app/remote/components/ClickTimes';
 
 const SplashPage = () => {
 
-    const { authSlice, counterSlice, profileSlice } = useStore();
+    const { counterSlice } = useStore();
   
     // const { actions } = counterStore();
     // const { isAuthenticated } = useAuthStore();
