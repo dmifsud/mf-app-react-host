@@ -8,7 +8,7 @@ import ProtectedRoute from './routing/ProtectedRoute';
 console.log('env', import.meta.env);
 let baseUrl = '';
 if (import.meta.env.MODE === 'production') {
-  baseUrl = 'https://dmifsud.github.io/mf-app-react-host';
+  baseUrl = '/mf-app-react-host';
 }
 
 function App() {
