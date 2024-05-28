@@ -3,6 +3,8 @@ import CourseActivity from "@mf-app/remote/components/courses/CourseActivity";
 import { Activity } from '@mf-app/store/models/courses.models';
 import useCourseActivityStore from '@mf-app/store/courses/activities/store.course-activities';
 import { create } from 'zustand';
+import { devtools } from 'zustand/middleware';
+// import zukeeper from 'zukeeper';
 
 interface ActivitiesModalStore {
   activity: Activity | null;
@@ -10,16 +12,19 @@ interface ActivitiesModalStore {
   clearActivity: () => void;
 }
 
-const useActivitiesModalStore = create<ActivitiesModalStore>((set) => ({
-  activity: null as Activity | null,
-  setActivityToShow: (id: number) => {
-    const activity = useCourseActivityStore.getState().data?.activities.find((a) => a.id === id);
-    if (activity) {
-      set({ activity });
-    }
-  },
-  clearActivity: () => set({ activity: null }),
-}));
+
+const useActivitiesModalStore = create<ActivitiesModalStore>()(
+  devtools((set) => ({
+    activity: null as Activity | null,
+    setActivityToShow: (id: number) => {
+      const activity = useCourseActivityStore.getState().data?.activities.find((a) => a.id === id);
+      if (activity) {
+        set({ activity }, false, 'SHOW_ACTIVITY');
+      }
+    },
+    clearActivity: () => set({ activity: null }, false, 'CLEAR_ACTIVITY'),
+  }), { name: 'ActivitiesModalStore', enabled: true, store: "@mf-app/host" })
+);
 
 
 const ActivityModal = () => {

@@ -4,11 +4,15 @@ This guide outlines the setup and usage of a host application consuming remote a
 
 ## Prerequisites
 
-Before running the host application, ensure the remote applications are installed and compiled. Check the other remote project's scripts for building and serving the application locally. Should be `npm run serve`
+Before running this host application, ensure the remote applications are installed and compiled. Check the other remote project's scripts for building and serving the application locally. `npm run serve`
+
+- Remote Project: contains a combination of dumb components and smart compoennts using the hared global store. https://github.com/dmifsud/mf-app-react-remote 
+
+- Shared Global Store: Zustand Store for consistent state management across the host and remote project. https://github.com/dmifsud/mf-app-store
 
 ## Directory Structure
 
-Ideally, all projects should be located adjacent to each other in the directory structure. However, this is not mandatory. If the projects are installed in completely separate locations, update the `package.local.json` file location reference accordingly, e.g., `"@mf-app/remote": "file:../remote/dist/types"`. This setup ensures type references for the module-federated remote distribution.
+Ideally, all projects should be located adjacent to each other in the directory structure. However, this is not mandatory. If the projects are installed in completely separate locations, update the `package.local.json` file location reference accordingly, e.g., `"@mf-app/remote": "file:../mf-app-react-remote/dist/types"`. This setup ensures type references for the module-federated remote distribution.
 
 ## Remote Application Setup (Development Testing)
 
@@ -32,7 +36,7 @@ This command performs the following actions:
 
 
 
-## Host Application Setup (this project)
+## Host (Shell) Application Setup (this project)
 
 1. Install Dependencies:
 
@@ -59,12 +63,6 @@ This command starts the host application with hot module replacement (HMR), util
 ## Notes
 
 - Any changes made to the remote applications must be re-compiled for the updates to take effect in the host application and `npm install` needs to be exectued on this [host] app for the types to take effect.
-
-## Project Dependencies
-
-- Remote Project: contains dumb components and components that use the shared store. https://github.com/dmifsud/mf-app-react-remote 
-
-- Shared Store: Zustand Store for consistent state management across the host and remote project. https://github.com/dmifsud/mf-app-store
 
 
 ## References
