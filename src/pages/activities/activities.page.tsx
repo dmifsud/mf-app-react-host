@@ -1,11 +1,12 @@
-import CourseActivities from "@mf-app/remote/components/courses/CourseActivities";
-import CourseActivity from "@mf-app/remote/components/courses/CourseActivity";
+// import CourseActivities from "@mf-app/remote/components/courses/CourseActivities";
 import { Activity } from '@mf-app/store/models/courses.models';
 import useCourseActivityStore from '@mf-app/store/courses/activities/store.course-activities';
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 import { devtoolsConfig } from "../../utils/store.utils";
-
+import { lazy, Suspense } from 'react';
+const CourseActivity = lazy(() => import("@mf-app/remote/components/courses/CourseActivity"));
+const CourseActivities = lazy(() => import("@mf-app/remote/components/courses/CourseActivities"));
 interface ActivitiesModalStore {
   activity: Activity | null;
   setActivityToShow: (id: number) => void;
@@ -45,7 +46,9 @@ const ActivityModal = () => {
              className="flex justify-center items-center fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full bg-gray-500 bg-opacity-40"
            >
              <div className="relative w-full max-w-md max-h-full">
-              <CourseActivity activity={activity}/>
+              <Suspense fallback={<div>Loading...</div>}>
+                <CourseActivity activity={activity}/>
+              </Suspense>
              </div>
            </div>
         )
@@ -67,10 +70,12 @@ const ActivitiesPage = () => {
     <div className="flex justify-center">
       <ActivityModal />
       <div className="w-[50%] p-10">
+        <Suspense fallback={<div>Loading...</div>}>
         <CourseActivities
           title="Course Activities"
           onSelected={handleCourseSelection}
         />
+        </Suspense>
       </div>
     </div>
   );
