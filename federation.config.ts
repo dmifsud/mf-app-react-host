@@ -3,8 +3,8 @@ const federationProjects: { [key: string]: [string, string] } = {
     "@mf-app/store": ['http://localhost:4000/mf-app-store/assets/remoteEntry.js', 'https://dmifsud.github.io/mf-app-store/mf-app-store/assets/remoteEntry.js'],
 };
 
-export const getRemoteProjects = (mode: 'development' | 'production') => {
-    return Object.fromEntries(Object.entries(federationProjects).map(([key, value]) => [key, value[mode === 'development' ? 0 : 1]]))
+export const getRemoteProjects = (mode: 'development' | 'production' | 'local-prod') => {
+    return Object.fromEntries(Object.entries(federationProjects).map(([key, value]) => [key, value[mode === 'development' || mode === 'local-prod' ? 0 : 1]]))
 };
 
 export default federationProjects;

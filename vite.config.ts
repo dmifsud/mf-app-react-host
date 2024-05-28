@@ -21,7 +21,7 @@ export default ({ mode }: { mode: string }) => {
       react(),
       federation({
         name: 'remote_app',
-        remotes: getRemoteProjects(mode as 'development' | 'production'),
+        remotes: getRemoteProjects(mode as 'development' | 'production' | 'local-prod'),
         shared: ['react', 'react-dom', 'zustand']
     })
     ],
@@ -30,7 +30,7 @@ export default ({ mode }: { mode: string }) => {
       origin: `http://localhost:${env.VITE_PORT}`, // asset for absolute path
     },
     build: {
-      target: 'esnext',  // Ensure this is set to 'esnext
+      target: 'esnext',
       outDir: 'dist', 
       // assetsDir: 'mf-app-react-host/assets',
     },

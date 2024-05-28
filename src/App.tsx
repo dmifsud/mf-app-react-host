@@ -5,11 +5,16 @@ import SplashPage from './pages/splash/splash.page';
 import LoginPage from './pages/login/login.page';
 import ActivitiesPage from './pages/activities/activities.page';
 import ProtectedRoute from './routing/ProtectedRoute';
+console.log('env', import.meta.env);
+let baseUrl = '';
+if (import.meta.env.MODE === 'production') {
+  baseUrl = 'https://dmifsud.github.io/mf-app-react-host';
+}
 
 function App() {
  
   return (
-      <Router>
+      <Router base={baseUrl}>
         <Switch>
           <Route path="/" component={SplashPage} />
           <Route path="/login" component={LoginPage} />
