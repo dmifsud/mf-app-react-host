@@ -4,7 +4,7 @@ import { Activity } from '@mf-app/store/models/courses.models';
 import useCourseActivityStore from '@mf-app/store/courses/activities/store.course-activities';
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
-// import zukeeper from 'zukeeper';
+import { devtoolsConfig } from "../../utils/store.utils";
 
 interface ActivitiesModalStore {
   activity: Activity | null;
@@ -23,7 +23,7 @@ const useActivitiesModalStore = create<ActivitiesModalStore>()(
       }
     },
     clearActivity: () => set({ activity: null }, false, 'CLEAR_ACTIVITY'),
-  }), { name: 'ActivitiesModalStore', enabled: true, store: "@mf-app/host" })
+  }), devtoolsConfig('ActivitiesModalStore'))
 );
 
 
