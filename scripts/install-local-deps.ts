@@ -41,5 +41,5 @@ if (fs.existsSync(localPackageJsonPath)) {
   console.log('No package.local.json found, skipping local dependencies installation.');
 }
 
-writeModuleDeclarations(remoteModuleFederationProjectNames, modulePath);
+// writeModuleDeclarations(remoteModuleFederationProjectNames, modulePath);
 console.log('Remote Projects added:', remoteModuleFederationProjectNames);
