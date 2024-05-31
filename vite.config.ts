@@ -28,6 +28,11 @@ export default ({ mode }: { mode: string }) => {
     server: {
       port: Number(env.VITE_PORT),
       origin: `http://localhost:${env.VITE_PORT}`, // asset for absolute path
+      watch: {
+        usePolling: true,
+        // useFsEvents: true,
+        // interval: 100,
+      },
     },
     build: {
       target: 'esnext',
