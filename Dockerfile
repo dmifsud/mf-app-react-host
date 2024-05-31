@@ -1,9 +1,9 @@
 # Host Project
 FROM node:22
 
-WORKDIR /app
+WORKDIR /usr/src/app
 
-COPY package*.json ./
+COPY package.json ./
 COPY scripts ./scripts
 COPY federation.config.ts ./federation.config.ts
 
