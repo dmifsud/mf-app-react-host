@@ -8,8 +8,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const modulePath = `${__dirname}/../src/module-federations.d.ts`;
-
-const localPackageJsonPath = `${__dirname}/../package.local.json`;
+// TODO: add option to install from package.local.json
+const localPackageJsonPath = `${__dirname}/../package.docker.json`;
 
 const remoteModuleFederationProjectNames = Object.keys(federationOptions);
 

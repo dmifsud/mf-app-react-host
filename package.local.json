@@ -1,6 +1,6 @@
 {
     "devDependencies": {
-        "@mf-app/remote": "file:./remote_repos/mf-app-react-remote/dist/types",
-        "@mf-app/store": "file:./remote_repos/mf-app-store/dist/types"
+        "@mf-app/remote": "file:../mf-app-react-remote/dist/types",
+        "@mf-app/store": "file:../mf-app-store/dist/types"
     }
 }
