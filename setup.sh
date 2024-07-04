@@ -31,19 +31,17 @@ fi
 echo "Starting remote module federation apps docker containers"
 docker-compose up -d
 
-# TODO: remove feat-docker checkout
 # build store first
 echo "Installing local remote dependencies for types"
-cd $STORE && git checkout feat-docker && rm -rf node_modules && npm install && npm run build:types
+cd $STORE && rm -rf node_modules && npm install && npm run build:types
 # build remote second
-cd ../mf-app-react-remote && git checkout feat-docker && rm -rf node_modules && npm install && npm run build:types
+cd ../mf-app-react-remote && rm -rf node_modules && npm install && npm run build:types
 
 cd .. 
 
 # # start the dependency remote module federation apps running on docker
 
-# # build host locally
-# git checkout feat-docker && rm -rf node_modules && yarn
+# # build host locally and manually
 echo "Installation Complete! Run:"
 echo "> yarn or npm install"
 echo "> yarn dev or npm run dev"
